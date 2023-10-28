@@ -1,0 +1,104 @@
+$primary: #3498db;
+footer {
+  margin-top: 10vmax;
+  padding: 2vmax;
+  background-color: rgb(34, 33, 33);
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.leftFooter {
+  text-align: center;
+  font-family: "Lucida sans", "Lucida Sans", "Lucida Sans Regular",
+    "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  > div {
+    > h4 {
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      font-size: 1.4vmax;
+    }
+    > p {
+      font-size: 1.2vmax;
+    }
+    > img {
+      width: 10vmax;
+      margin: 1vmax;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      transform: scale(1);
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.midFooter {
+  width: 60%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > img {
+    width: 45%;
+    margin: 2vmax 0;
+  }
+  max-width: 60%;
+  margin: 1vmax auto;
+  > p {
+    font-size: 1vmax;
+  }
+}
+
+.rightFooter {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > h4 {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 1.4vmax;
+    text-decoration: underline;
+  }
+  > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    > a {
+      text-decoration: none;
+      color: white;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-size: 1.3vmax;
+      margin: 0.5vmax;
+      transition: 0.3s;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+// Media Query Breakpoint
+@media only screen and (max-width: 48rem) {
+  footer {
+    flex-direction: column;
+
+    .leftFooter {
+      flex-direction: row;
+    }
+    .midFooter {
+      > img {
+        width: 80%;
+      }
+    }
+    .rightFooter {
+      > div {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+      }
+    }
+  }
+}
