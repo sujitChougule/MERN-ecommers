@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ReactNavbar } from "overlay-navbar";
 import logo from "../../images/logoDark.png";
 import "./header.scss";
 import { ImSearch } from "react-icons/im";
@@ -61,7 +60,7 @@ const Header = () => {
                 About
               </a>
             </li>
-            <li className="topOpt">
+            <div className="topOpt">
               <li className="menu-item">
                 <a className="menu-link " href="/login" onClick={closeMenu}>
                   <p>
@@ -76,7 +75,7 @@ const Header = () => {
                   </p>
                 </a>
               </li>
-            </li>
+            </div>
           </ul>
         </div>
         <span>

@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
 import "./Home.scss";
 import Product from "./Product";
 import MetaDate from "../layouts/MetaDate";
-const product = {
-  name: "Blue Tshirt",
-  images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
-  price: 3000,
-  _id: "sujit",
-};
+import { getProduct } from "../../actions/productAction";
+import { useSelector, useDispatch } from "react-redux";
 const Home = () => {
+  const dispatch = useDispatch();
+  const { loading, products, productsCount, error } = useSelector(
+    (state) => state.products
+  );
+
+  useEffect(() => {
+    dispatch(getProduct());
+  }, [dispatch]);
+
   return (
     <div className="home">
       <MetaDate title="ShopNest" />
@@ -26,15 +31,7 @@ const Home = () => {
         Featured Products
       </h2>
       <div className="container" id="container">
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
-        <Product product={product} />
+        {products && products.map((product) => <Product product={product} />)}
       </div>
     </div>
   );
