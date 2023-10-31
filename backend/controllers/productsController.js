@@ -22,7 +22,7 @@ exports.createProduct = async (req, res, next) => {
 //get all products
 exports.getAllProducts = async (req, res) => {
   const resultPerPage = 8;
-  const productCount = await Product.countDocuments();
+  const productsCount = await Product.countDocuments();
   try {
     const apiFeatures = new ApiFeatures(Product.find(), req.query)
       .search()
@@ -32,7 +32,7 @@ exports.getAllProducts = async (req, res) => {
     res.status(200).json({
       success: true,
       products,
-      productCount,
+      productsCount,
     });
   } catch (error) {
     return next(new ErrorHandler("Products not found", 500));
@@ -43,10 +43,9 @@ exports.getAllProducts = async (req, res) => {
 exports.getProductDetails = async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
-    res.status(500).json({
+    res.status(200).json({
       success: true,
       product,
-      productCount,
     });
   } catch (error) {
     return next(new ErrorHandler("Product not found", 500));
