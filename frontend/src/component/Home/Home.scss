@@ -65,7 +65,7 @@ $primary: #3498db;
   }
 
   ////feature products
-  .container {
+  .containers {
     display: flex;
     margin: 2vmax auto;
     width: 100vw;
@@ -115,7 +115,18 @@ $primary: #3498db;
   }
 
   @media only screen and (max-width: 48rem) {
+    .home {
+      .containers {
+        padding: 0;
+      }
+    }
     .productCard {
+      width: 50%;
+      border: 1px rgb(216, 216, 216) solid;
+      margin: 0;
+      > img {
+        width: 100%;
+      }
       > p {
         font-size: 1.7vmax;
       }
