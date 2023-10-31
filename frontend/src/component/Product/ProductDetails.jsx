@@ -26,7 +26,7 @@ const ProductDetails = () => {
     edit: false,
     color: "rgba(20, 20, 20, 0.1)",
     activeColor: "tomato",
-    size: window.innerWidth < 600 ? 15 : 20,
+    size: window.innerWidth < 600 ? 25 : 30,
     value: product.ratings,
     isHalf: true,
   };
@@ -34,16 +34,11 @@ const ProductDetails = () => {
   return (
     <div className="ProductDetailsPage">
       <div className="ProductDetails">
-        <div>
-          <Carousel>
+        <div className="carouselBox">
+          <Carousel className="CarouselImage">
             {product.images &&
               product.images.map((item, i) => (
-                <img
-                  className="CarouselImage"
-                  key={i}
-                  src={item.url}
-                  alt={`${i} Slide`}
-                />
+                <img key={i} src={item.url} alt={`${i} Slide`} />
               ))}
           </Carousel>
         </div>
@@ -59,6 +54,7 @@ const ProductDetails = () => {
           </div>
           <div className="detailsBlocks-3">
             <h1>{`₹${product.price}`}</h1>
+            <p>Inclusive of all taxes</p>
             <div className="detailsBlocks-3-1">
               <div className="detailsBlocks-3-1-1">
                 <button>-</button>
@@ -75,7 +71,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="detailsBlocks-4">
-            Description:<p>{product.description}</p>
+            Description <p>{product.description}</p>
           </div>
           <button className="submitReview"> Submit Review</button>
         </div>
