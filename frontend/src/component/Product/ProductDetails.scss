@@ -3,7 +3,7 @@
   margin-top: 4rem;
   // padding: 0;
   .ProductDetails {
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(233, 231, 231);
     background: linear-gradient(to bottom, rgb(230, 230, 230), #ffffff);
     // height: 100vh;
 
@@ -146,7 +146,66 @@
       }
     }
   }
+  // review card
+  .reviews {
+    display: flex;
+    // flex-wrap: wrap;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 0.01px; // This effectively hides the scrollbar
+    }
+  }
+  .reviewHeading {
+    color: #000000be;
+    font: 500 1.4vmax "Roboto";
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1vmax;
+    width: 20vmax;
+    margin: auto;
+    margin-bottom: 4vmax;
+  }
+  .reviewCard {
+    flex: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(54, 54, 54, 0.1);
+    width: 30vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vmax;
+    padding: 3vmax;
+    > img {
+      width: 5vmax;
+    }
+    > p {
+      padding: 0.5vmax;
 
+      color: rgba(0, 0, 0, 0.836);
+      font: 600 0.9vmax "Roboto";
+    }
+    > span {
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  .noReviews {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  // reviewCart media query
+
+  @media screen and (max-width: 600px) {
+    .reviewCard {
+      > span {
+        font-size: 0.5rem;
+      }
+      > p {
+        font: 600 2vmax "Roboto";
+      }
+    }
+  }
+
+  // productDetails media query
   @media screen and (max-width: 600px) {
     .ProductDetails {
       .carouselBox {
