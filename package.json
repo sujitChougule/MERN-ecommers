@@ -11,6 +11,7 @@
   "author": "sujit chougule",
   "license": "ISC",
   "dependencies": {
+    "@material/typography": "^14.0.0",
     "@reduxjs/toolkit": "^1.9.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",

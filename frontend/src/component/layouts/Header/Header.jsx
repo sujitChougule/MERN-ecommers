@@ -5,7 +5,7 @@ import { ImSearch } from "react-icons/im";
 import { FaArrowLeft } from "react-icons/fa6";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { BiCartAlt } from "react-icons/bi";
-
+import Search from "../../Product/Search.jsx";
 const Header = () => {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [searchIsActive, setSearchIsActive] = useState(false);
@@ -46,8 +46,8 @@ const Header = () => {
               </a>
             </li>
             <li className="menu-item">
-              <a className="menu-link" href="/product" onClick={closeMenu}>
-                Product
+              <a className="menu-link" href="/products" onClick={closeMenu}>
+                Products
               </a>
             </li>
             <li className="menu-item">
@@ -92,12 +92,7 @@ const Header = () => {
                 <FaArrowLeft />
               </i>
             </span>
-            <input
-              type="search"
-              name="search"
-              className="search-input"
-              placeholder="Search here..."
-            />
+            <Search />
           </form>
         </div>
       </nav>

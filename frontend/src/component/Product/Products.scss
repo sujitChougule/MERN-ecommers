@@ -1,0 +1,121 @@
+$primary: #3498db;
+.productsHeading {
+  margin: 1vmax auto;
+  margin-top: 5rem;
+  width: 8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1vmax;
+  color: rgba(0, 0, 0, 0.6);
+  font: 500 1.5rem "Roboto";
+  text-align: center;
+}
+
+.Products {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 4vmax;
+  margin-left: 17vmax;
+  justify-content: center;
+  min-height: 30vh;
+}
+
+.paginationBox {
+  display: flex;
+  justify-content: center;
+  margin: 6vmax;
+  .pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+}
+.page-item {
+  background-color: rgb(255, 255, 255);
+  list-style: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1vmax 1.5vmax;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(230, 230, 230);
+  }
+}
+
+.page-item:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.page-item:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.page-link {
+  text-decoration: none;
+  font: 300 1vmax "Roboto";
+  color: rgb(80, 80, 80);
+}
+
+.pageItemActive {
+  background-color: $primary;
+}
+.pageLinkActive {
+  color: white;
+}
+
+.filterBox {
+  width: auto;
+  padding: 2rem;
+  position: absolute;
+  top: 15vmax;
+  left: 1vmax;
+  font: 300 1rem "Roboto";
+  color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.167);
+  border-radius: 1rem;
+}
+
+.categoryOptBox {
+  margin: 1vmax 0;
+  .categoryBox {
+    padding: 0;
+
+    .category-link {
+      list-style: none;
+      margin: 0.4vmax;
+      margin-left: 1.5vmax;
+      cursor: pointer;
+      transition: all 0.5s;
+      color: rgba(0, 0, 0, 0.6);
+      &:hover {
+        color: $primary;
+      }
+    }
+    .catSelected {
+      color: $primary;
+    }
+  }
+}
+
+.filterBox > fieldset {
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.167);
+  padding: 1vmax 2vmax;
+  border-radius: 9px;
+  color: rgba(0, 0, 0, 0.6);
+  > span {
+    width: 6.5rem;
+  }
+}
+@media only screen and (max-width: 48rem) {
+  .Products {
+    margin: 0;
+  }
+  .filterBox {
+    padding-top: 1rem;
+    width: 80%;
+    position: static;
+    margin: 1rem auto;
+  }
+  .page-link {
+    font: 300 2vmax "Roboto";
+    color: rgb(80, 80, 80);
+  }
+}

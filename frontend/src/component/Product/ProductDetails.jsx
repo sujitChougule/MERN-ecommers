@@ -8,6 +8,7 @@ import "./ProductDetails.scss";
 import ReviewCard from "./ReviewCard";
 import Loader from "../layouts/Loader/Loader";
 import { useAlert } from "react-alert";
+import MetaDate from "../layouts/MetaDate";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <div className="ProductDetailsPage">
+          <MetaDate title={`${product.name} --ShopNest`} />
           <div className="ProductDetails">
             <div className="carouselBox">
               <Carousel className="CarouselImage">

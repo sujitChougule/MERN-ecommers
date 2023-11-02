@@ -12,12 +12,12 @@ const Footer = () => {
           <p>Download App for Andriod and ISO mobile phone</p>
         </div>
         <div>
-          <img src={play} />
-          <img src={app} />
+          <img src={play} alt="playStore" />
+          <img src={app} alt="playStore" />
         </div>
       </div>
       <div className="midFooter">
-        <img src={logo} />
+        <img src={logo} alt="AppLogo" />
         <p>Your One-Stop Shop</p>
         <p>Copyrights &copy; 2023 SoftKnotch</p>
       </div>
