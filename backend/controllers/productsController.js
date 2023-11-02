@@ -33,6 +33,7 @@ exports.getAllProducts = async (req, res) => {
       success: true,
       products,
       productsCount,
+      resultPerPage,
     });
   } catch (error) {
     return next(new ErrorHandler("Products not found", 500));
