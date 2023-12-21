@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     select: false, //by these will not be show while using .find()
     minLen: [8, "name cannot be less than 4 characters"],
   },
-  avator: {
+  avatar: {
     public_id: {
       type: String,
       required: true,
