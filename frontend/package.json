@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/icons": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.61",
     "@material/typography": "^14.0.0",
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",

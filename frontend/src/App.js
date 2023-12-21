@@ -9,7 +9,8 @@ import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products.jsx";
 import Search from "./component/Product/Search";
 import LoginSignUp from "./component/User/LoginSignUp";
-
+import store from "./store.js";
+import { loadUser } from "./actions/userAction.js";
 function App() {
   useEffect(() => {
     webloader.load({
@@ -17,6 +18,7 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
+    store.dispatch(loadUser());
   }, []);
 
   return (

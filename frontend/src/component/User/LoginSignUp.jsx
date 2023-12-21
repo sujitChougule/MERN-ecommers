@@ -1,12 +1,24 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineMail } from "react-icons/hi";
 import { AiFillUnlock } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import "./LoginSignUp.scss";
 import Profile from "../images/profilePng.png";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, login, register } from "../../actions/userAction";
+import { useAlert } from "react-alert";
+import Loader from "../layouts/Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignUp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const alert = useAlert();
+  const { error, loading, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
@@ -25,8 +37,10 @@ const LoginSignUp = () => {
   const [avatar, setAvatar] = useState();
   const [avatarPreview, setAvatarPreview] = useState(Profile);
 
-  const loginSubmit = () => {
-    console.log("login form submitted");
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(loginEmail, loginPassword));
+    // console.log("login form submitted");
   };
 
   const registerSubmit = (e) => {
@@ -37,7 +51,7 @@ const LoginSignUp = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    console.log("register form submitted");
+    dispatch(register(myForm));
   };
 
   const registerDataChange = (e) => {
@@ -54,6 +68,16 @@ const LoginSignUp = () => {
       setUser({ ...user, [e.target.name]: [e.target.value] });
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    if (isAuthenticated) {
+      navigate("/account");
+    }
+  }, [dispatch, alert, error, isAuthenticated, navigate]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -73,100 +97,106 @@ const LoginSignUp = () => {
 
   return (
     <Fragment>
-      <div className="LoginSignUpContainer">
-        <div className="LoginSignUpBox">
-          <div>
-            <div className="login_signUp_toggle">
-              <p onClick={(e) => switchTabs(e, "login")}>LOGIN</p>
-              <p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
-            </div>
-            <button ref={switcherTab}></button>
-          </div>
-          <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
-            <div className="loginEmail">
-              <HiOutlineMail />
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                value={loginEmail}
-                onChange={(e) => {
-                  setLoginEmail(e.target.value);
-                }}
-              />
-            </div>
-            <div className="loginPassword">
-              <AiFillUnlock />
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                value={loginPassword}
-                onChange={(e) => {
-                  setLoginPassword(e.target.value);
-                }}
-              />
-            </div>
-            <Link to="/password/forgot">Forget Password ?</Link>
-            <input type="submit" value="Login" className="loginBtn" />
-          </form>
-          <form
-            className="SignUpForm"
-            ref={registerTab}
-            encType="mutipart/form-data"
-            onSubmit={registerSubmit}>
-            <div className="SignUpName">
-              <BiUser />
-              <input
-                type="text"
-                placeholder="Name"
-                required
-                name="name"
-                value={name}
-                onChange={registerDataChange}
-              />
-            </div>
-            <div className="SignUpEmail">
-              <HiOutlineMail />
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <div className="LoginSignUpContainer">
+            <div className="LoginSignUpBox">
+              <div>
+                <div className="login_signUp_toggle">
+                  <p onClick={(e) => switchTabs(e, "login")}>LOGIN</p>
+                  <p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
+                </div>
+                <button ref={switcherTab}></button>
+              </div>
+              <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
+                <div className="loginEmail">
+                  <HiOutlineMail />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={loginEmail}
+                    onChange={(e) => {
+                      setLoginEmail(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="loginPassword">
+                  <AiFillUnlock />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    required
+                    value={loginPassword}
+                    onChange={(e) => {
+                      setLoginPassword(e.target.value);
+                    }}
+                  />
+                </div>
+                <Link to="/password/forgot">Forget Password ?</Link>
+                <input type="submit" value="Login" className="loginBtn" />
+              </form>
+              <form
+                className="SignUpForm"
+                ref={registerTab}
+                encType="mutipart/form-data"
+                onSubmit={registerSubmit}>
+                <div className="SignUpName">
+                  <BiUser />
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    required
+                    name="name"
+                    value={name}
+                    onChange={registerDataChange}
+                  />
+                </div>
+                <div className="SignUpEmail">
+                  <HiOutlineMail />
 
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                name="email"
-                value={email}
-                onChange={registerDataChange}
-              />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    name="email"
+                    value={email}
+                    onChange={registerDataChange}
+                  />
+                </div>
+                <div className="SignUpPassword">
+                  <AiFillUnlock />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    required
+                    name="password"
+                    value={password}
+                    onChange={registerDataChange}
+                  />
+                </div>
+                <div id="registerImage">
+                  <img src={avatarPreview} alt="Avatar Preview" />
+                  <input
+                    type="file"
+                    name="avatar"
+                    accept="image/*"
+                    onChange={registerDataChange}
+                  />
+                </div>
+                <input
+                  type="submit"
+                  value="Register"
+                  className="signUpBtn"
+                  disabled={false}
+                />
+              </form>
             </div>
-            <div className="SignUpPassword">
-              <AiFillUnlock />
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                name="password"
-                value={password}
-                onChange={registerDataChange}
-              />
-            </div>
-            <div id="registerImage">
-              <img src={avatarPreview} alt="Avatar Preview" />
-              <input
-                type="file"
-                name="avatar"
-                accept="image/*"
-                onChange={registerDataChange}
-              />
-            </div>
-            <input
-              type="submit"
-              value="Register"
-              className="signUpBtn"
-              disabled={false}
-            />
-          </form>
-        </div>
-      </div>
+          </div>
+        </Fragment>
+      )}
     </Fragment>
   );
 };
