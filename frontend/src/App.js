@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import "./App.css";
 import webloader from "webfontloader";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import Header from "./component/layouts/Header/Header";
 import Footer from "./component/layouts/Footer/Footer";
 import Home from "./component/Home/Home.jsx";
@@ -11,6 +16,8 @@ import Search from "./component/Product/Search";
 import LoginSignUp from "./component/User/LoginSignUp";
 import store from "./store.js";
 import { loadUser } from "./actions/userAction.js";
+import Profile from "./component/User/Profile.jsx";
+import { useSelector } from "react-redux";
 function App() {
   useEffect(() => {
     webloader.load({
@@ -20,7 +27,7 @@ function App() {
     });
     store.dispatch(loadUser());
   }, []);
-
+  const { isAuthenticated } = useSelector((state) => state.user);
   return (
     <Router>
       <Header />
@@ -31,6 +38,9 @@ function App() {
         <Route exact path="/Search" element={<Search />} />
         <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/login" element={<LoginSignUp />} />
+        {isAuthenticated && (
+          <Route exact path="/account" element={<Profile />} />
+        )}
       </Routes>
       <Footer />
     </Router>

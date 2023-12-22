@@ -6,7 +6,11 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { BiCartAlt } from "react-icons/bi";
 import Search from "../../Product/Search.jsx";
+import { useSelector } from "react-redux";
+import UserOption from "./UserOption.jsx";
 const Header = () => {
+  const { isAuthenticated } = useSelector((state) => state.user);
+
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [searchIsActive, setSearchIsActive] = useState(false);
 
@@ -61,13 +65,17 @@ const Header = () => {
               </a>
             </li>
             <div className="topOpt">
-              <li className="menu-item">
-                <a className="menu-link " href="/login" onClick={closeMenu}>
-                  <p>
-                    <RiAccountCircleFill className="icon" />
-                  </p>
-                </a>
-              </li>
+              {/* <li className="menu-item">
+                {isAuthenticated ? (
+                  <UserOption />
+                ) : (
+                  <a className="menu-link " href="/login" onClick={closeMenu}>
+                    <p>
+                      <RiAccountCircleFill className="icon" />
+                    </p>
+                  </a>
+                )}
+              </li> */}
               <li className="menu-item">
                 <a className="menu-link" href="/login" onClick={closeMenu}>
                   <p>
@@ -78,6 +86,18 @@ const Header = () => {
             </div>
           </ul>
         </div>
+        <li className="dynamicProfile">
+          {isAuthenticated ? (
+            <UserOption />
+          ) : (
+            <a className="elseProfile " href="/login" onClick={closeMenu}>
+              <RiAccountCircleFill
+                style={{ fontSize: "60px" }}
+                className="icon"
+              />
+            </a>
+          )}
+        </li>
         <span>
           <i className="bx bx-search search-toggle" onClick={toggleSearch}>
             <ImSearch />
