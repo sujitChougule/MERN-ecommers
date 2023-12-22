@@ -1,0 +1,122 @@
+$primary: #3498db;
+.profileContainer {
+  margin-top: 2rem;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  > div:first-child {
+    height: 70%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    > h1 {
+      color: rgba(0, 0, 0, 0.5);
+      font: 500 2.2vmax "Roboto";
+      transform: translateX(-10vmax) translateY(-2vmax);
+    }
+    > img {
+      width: 240px;
+      height: 240px;
+      border-radius: 100%;
+      transition: all 0.5s;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    > a {
+      border: none;
+      background-color: $primary;
+      font: 400 1vmax;
+      color: white;
+      text-decoration: none;
+      padding: 0.5vmax;
+      width: 40%;
+      margin: 4vmax;
+      text-align: center;
+      transition: all 0.5s;
+      border-radius: 4px;
+      margin-top: 1rem;
+      transition: all 0.5s;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+  > div:last-child {
+    justify-content: space-evenly;
+    height: 70%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    > div {
+      > h4 {
+        color: black;
+        font: 400 1.2vmax "Roboto";
+      }
+      > p {
+        color: rgba(0, 0, 0, 0.522);
+        font: 400 2vmax cursive;
+        margin: 0.2vmax;
+      }
+      &:last-child {
+        > a {
+          border-radius: 4px;
+
+          border: none;
+          background-color: rgb(68, 68, 68);
+          font: 400 1vmax "Roboto";
+          color: white;
+          text-decoration: none;
+          padding: 0.5vmax;
+          text-align: center;
+          transition: all 0.5s;
+          margin: 1vmax;
+          &:hover {
+            background-color: rgb(30, 30, 30);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 48rem) {
+  .profileContainer {
+    margin-top: 6rem;
+    flex-direction: column;
+    height: 75vh;
+    > div:first-child {
+      height: 40%;
+      width: 100%;
+      align-items: center;
+      > img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+    > div:last-child {
+      height: 35%;
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+      > div {
+        > h4 {
+          font: 400 2vmax "Roboto";
+        }
+        > p {
+          font: 400 2.5vmax cursive;
+        }
+        &:last-child {
+          > a {
+            font: 400 2vmax "Roboto";
+          }
+        }
+      }
+    }
+  }
+}

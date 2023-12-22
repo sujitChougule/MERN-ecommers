@@ -1,0 +1,44 @@
+/* Your existing global styles and other styles go here */
+
+.speedDial {
+  position: fixed;
+  padding-top: 11.5rem;
+  bottom: 20px;
+  right: 20px;
+  font-size: 40px;
+  height: 3rem;
+  width: 3rem;
+
+  //   z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.SpeedDailIcon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.SpeedDialAction {
+  background-color: #2196f3; /* Customize the background color */
+  color: #fff; /* Customize the text color */
+  margin-bottom: 10px; /* Adjust the spacing between actions */
+
+  &:hover {
+    background-color: #1565c0; /* Customize the background color on hover */
+  }
+}
+
+/* Additional styles for the tooltip, if needed */
+.MuiTooltip-tooltip {
+  background-color: #fff; /* Customize tooltip background color */
+  color: #333; /* Customize tooltip text color */
+  border: 0.5px solid #ccc; /* Add a border to the tooltip */
+}
+
+/* Other styles for the SpeedDial component can be added here */
