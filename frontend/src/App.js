@@ -17,6 +17,8 @@ import LoginSignUp from "./component/User/LoginSignUp";
 import store from "./store.js";
 import { loadUser } from "./actions/userAction.js";
 import Profile from "./component/User/Profile.jsx";
+import UpdateProfile from "./component/User/UpdateProfile.jsx";
+
 import { useSelector } from "react-redux";
 function App() {
   useEffect(() => {
@@ -40,6 +42,9 @@ function App() {
         <Route exact path="/login" element={<LoginSignUp />} />
         {isAuthenticated && (
           <Route exact path="/account" element={<Profile />} />
+        )}
+        {isAuthenticated && (
+          <Route exact path="/me/update" element={<UpdateProfile />} />
         )}
       </Routes>
       <Footer />
