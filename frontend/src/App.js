@@ -1,12 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import webloader from "webfontloader";
-import {
-  Navigate,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./component/layouts/Header/Header";
 import Footer from "./component/layouts/Footer/Footer";
 import Home from "./component/Home/Home.jsx";
@@ -18,18 +13,22 @@ import store from "./store.js";
 import { loadUser } from "./actions/userAction.js";
 import Profile from "./component/User/Profile.jsx";
 import UpdateProfile from "./component/User/UpdateProfile.jsx";
-
+import UpdatePassword from "./component/User/UpdatePassword.jsx";
+import ForgotPassword from "./component/User/ForgotPassword.jsx";
+import ResetPassword from "./component/User/ResetPassword";
 import { useSelector } from "react-redux";
 function App() {
+  const { isAuthenticated } = useSelector((state) => state.user);
   useEffect(() => {
     webloader.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-    store.dispatch(loadUser());
+    if (isAuthenticated) {
+      store.dispatch(loadUser());
+    }
   }, []);
-  const { isAuthenticated } = useSelector((state) => state.user);
   return (
     <Router>
       <Header />
@@ -46,6 +45,15 @@ function App() {
         {isAuthenticated && (
           <Route exact path="/me/update" element={<UpdateProfile />} />
         )}
+        {isAuthenticated && (
+          <Route exact path="/password/update" element={<UpdatePassword />} />
+        )}
+        <Route exact path="/password/forgot" element={<ForgotPassword />} />
+        <Route
+          exact
+          path="/password/reset/:token"
+          element={<ResetPassword />}
+        />
       </Routes>
       <Footer />
     </Router>
