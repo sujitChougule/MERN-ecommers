@@ -77,7 +77,7 @@ const Header = () => {
                 )}
               </li> */}
               <li className="menu-item">
-                <a className="menu-link" href="/login" onClick={closeMenu}>
+                <a className="menu-link" href="/cart" onClick={closeMenu}>
                   <p>
                     <BiCartAlt className="icon" />
                   </p>
