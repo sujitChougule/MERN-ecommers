@@ -16,6 +16,8 @@ import UpdateProfile from "./component/User/UpdateProfile.jsx";
 import UpdatePassword from "./component/User/UpdatePassword.jsx";
 import ForgotPassword from "./component/User/ForgotPassword.jsx";
 import ResetPassword from "./component/User/ResetPassword";
+import Cart from "./component/Cart/Cart.jsx";
+
 import { useSelector } from "react-redux";
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -25,9 +27,7 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-    if (isAuthenticated) {
-      store.dispatch(loadUser());
-    }
+    store.dispatch(loadUser());
   }, []);
   return (
     <Router>
@@ -54,6 +54,7 @@ function App() {
           path="/password/reset/:token"
           element={<ResetPassword />}
         />
+        <Route exact path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </Router>
