@@ -8,10 +8,11 @@ import {
 } from "../../actions/cartAction.js";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart.js";
 import { Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const increaseQuantity = (id, quantity, stock) => {
     const qty = quantity + 1;
     if (stock <= quantity) {
@@ -26,7 +27,9 @@ const Cart = () => {
     }
     dispatch(addToCartItems(id, qty));
   };
-
+  const checkOutHandler = () => {
+    navigate(`/login?redirect=shipping`);
+  };
   return (
     <Fragment>
       {cartItems.length === 0 ? (
@@ -93,7 +96,7 @@ const Cart = () => {
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button>Check Out</button>
+                <button onClick={checkOutHandler}>Check Out</button>
               </div>
             </div>
           </div>
