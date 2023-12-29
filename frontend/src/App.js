@@ -17,7 +17,7 @@ import UpdatePassword from "./component/User/UpdatePassword.jsx";
 import ForgotPassword from "./component/User/ForgotPassword.jsx";
 import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./component/Cart/Cart.jsx";
-
+import Shipping from "./component/Cart/Shipping.jsx";
 import { useSelector } from "react-redux";
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -55,6 +55,9 @@ function App() {
           element={<ResetPassword />}
         />
         <Route exact path="/cart" element={<Cart />} />
+        {isAuthenticated && (
+          <Route exact path="/login/shipping" element={<Shipping />} />
+        )}
       </Routes>
       <Footer />
     </Router>
