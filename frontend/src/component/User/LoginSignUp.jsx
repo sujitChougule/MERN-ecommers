@@ -9,11 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import Loader from "../layouts/Loader/Loader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const LoginSignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const alert = useAlert();
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -68,16 +69,16 @@ const LoginSignUp = () => {
       setUser({ ...user, [e.target.name]: [e.target.value] });
     }
   };
-
+  const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate("/account");
+      navigate(redirect);
     }
-  }, [dispatch, alert, error, isAuthenticated, navigate]);
+  }, [dispatch, alert, error, isAuthenticated, navigate, redirect]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import webloader from "webfontloader";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
@@ -18,10 +18,29 @@ import ForgotPassword from "./component/User/ForgotPassword.jsx";
 import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./component/Cart/Cart.jsx";
 import Shipping from "./component/Cart/Shipping.jsx";
+import ConfirmOrder from "./component/Cart/ConfirmOrder.jsx";
+import Payment from "./component/Cart/Payment.jsx";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    try {
+      const { data } = await axios.get("/api/v1/stripeapikey");
+      setStripeApiKey(data.stripeApiKey);
+    } catch (error) {
+      console.error("Error fetching Stripe API key:", error);
+    }
+  }
+
   useEffect(() => {
+    getStripeApiKey();
+
     webloader.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
@@ -55,8 +74,24 @@ function App() {
           element={<ResetPassword />}
         />
         <Route exact path="/cart" element={<Cart />} />
+
         {isAuthenticated && (
           <Route exact path="/login/shipping" element={<Shipping />} />
+        )}
+        {isAuthenticated && (
+          <Route exact path="/order/confirm" element={<ConfirmOrder />} />
+        )}
+
+        {isAuthenticated && stripeApiKey && (
+          <Route
+            exact
+            path="/process/payment"
+            element={
+              <Elements stripe={loadStripe(`${stripeApiKey}`)}>
+                <Payment />{" "}
+              </Elements>
+            }
+          />
         )}
       </Routes>
       <Footer />
