@@ -9,7 +9,16 @@ $primary: #3498db;
   font: 500 1.5rem "Roboto";
   text-align: center;
 }
-
+.ProductsMain {
+  background: linear-gradient(
+    to top,
+    white,
+    #e8f4f8,
+    #e8f4f8,
+    #e8f4f8,
+    #e8f4f8
+  );
+}
 .Products {
   display: flex;
   flex-wrap: wrap;
@@ -118,4 +127,7 @@ $primary: #3498db;
     font: 300 2vmax "Roboto";
     color: rgb(80, 80, 80);
   }
+}
+.noFound {
+  height: 60vh;
 }

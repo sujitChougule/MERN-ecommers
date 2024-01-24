@@ -9,6 +9,7 @@ import Pagination from "react-js-pagination";
 import Slider from "@mui/material/Slider";
 import { useAlert } from "react-alert";
 import MetaDate from "../layouts/MetaDate";
+import NoDataImg from "../images/nodata.png";
 // import Typography from "@mui/material/core/Typography";
 
 const categories = [
@@ -54,14 +55,21 @@ const Products = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="ProductsMain">
           <MetaDate title="Products --ShopNest" />
           <h2 className="productsHeading">Products</h2>
           <div className="Products">
-            {products &&
+            {products.length > 0 ? (
               products.map((product) => (
                 <ProductCard key={product._id} product={product} />
-              ))}
+              ))
+            ) : (
+              <img
+                className="noFound"
+                src={NoDataImg}
+                alt="product not found image"
+              />
+            )}
           </div>
           <div className="filterBox">
             <p>Price</p>
@@ -104,20 +112,25 @@ const Products = () => {
             </fieldset>
           </div>
           <div className="paginationBox">
-            <Pagination
-              activePage={currentPage}
-              itemsCountPerPage={resultPerPage}
-              totalItemsCount={productsCount}
-              onChange={setCurrentPageNo}
-              nextPageText="Next"
-              prevPageTexh="Prev"
-              firstPageText="1st"
-              lastPageText="Last"
-              itemClass="page-item"
-              linkClass="page-link"
-              activeClass="pageItemActive"
-              activeLinkClass="pageLinkActive"
-            />
+            {products.length > 0 ? (
+              <Pagination
+                activePage={currentPage}
+                itemsCountPerPage={resultPerPage}
+                totalItemsCount={productsCount}
+                onChange={setCurrentPageNo}
+                nextPageText="Next"
+                prevPageTexh="Prev"
+                firstPageText="1st"
+                lastPageText="Last"
+                itemClass="page-item"
+                linkClass="page-link"
+                activeClass="pageItemActive"
+                activeLinkClass="pageLinkActive"
+                pageRangeDisplayed={1}
+              />
+            ) : (
+              <p></p>
+            )}
           </div>
         </div>
       )}

@@ -37,7 +37,6 @@ const ProductDetails = () => {
   }, [dispatch, id, alert, error]);
 
   const addToCart = () => {
-    console.log(id);
     dispatch(addToCartItems(id, quantity));
     alert.success("Successfully item added to cart");
   };
@@ -86,13 +85,17 @@ const ProductDetails = () => {
                     <button onClick={decrementOuantity}>-</button>
                     <input readOnly value={quantity} type="number" />
                     <button onClick={incrementOuantity}>+</button>
-                    <button onClick={addToCart}>Add to Cart</button>
+                    <button
+                      disabled={product.stock < 1 ? true : false}
+                      onClick={addToCart}>
+                      Add to Cart
+                    </button>
                   </div>
                   <p>
                     Status:
                     <b
-                      className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                      {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                      className={product.stock < 1 ? "redColor" : "greenColor"}>
+                      {product.stock < 1 ? "OutOfStock" : "InStock"}
                     </b>
                   </p>
                 </div>

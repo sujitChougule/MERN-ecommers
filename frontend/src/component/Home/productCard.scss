@@ -1,12 +1,18 @@
 .productCard {
-  width: 14vmax;
+  width: 15vmax;
+
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: rgb(48, 48, 48);
-  margin: 2rem;
+  background-color: white;
+  margin: 10px;
   transition: all 0.5s;
   padding-bottom: 0.5vmax;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  align-items: center;
+  // height: 27vmax;
   > img {
     width: 14vmax;
   }
