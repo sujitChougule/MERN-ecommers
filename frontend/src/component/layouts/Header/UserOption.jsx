@@ -21,7 +21,7 @@ const UserOption = () => {
   const { user } = useSelector((state) => state.user);
 
   const dashboard = () => {
-    navigate("/dashboard");
+    navigate("/admin/dashboard");
   };
   const orders = () => {
     navigate("/orders");

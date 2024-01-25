@@ -24,7 +24,9 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-
+import OrderSuccess from "./component/Cart/OrderSuccess.jsx";
+import MyOrders from "./component/Order/myOrders.jsx";
+import OrderDetails from "./component/Order/OrderDetails.jsx";
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -92,6 +94,16 @@ function App() {
               </Elements>
             }
           />
+        )}
+
+        {isAuthenticated && (
+          <Route exact path="/success" element={<OrderSuccess />} />
+        )}
+        {isAuthenticated && (
+          <Route exact path="/orders" element={<MyOrders />} />
+        )}
+        {isAuthenticated && (
+          <Route exact path="/order/:id" element={<OrderDetails />} />
         )}
       </Routes>
       <Footer />

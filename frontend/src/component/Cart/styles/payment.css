@@ -60,6 +60,9 @@
   background-color: #215c83;
 }
 
+.sampleData {
+  font-size: xx-small;
+}
 @media screen and (max-width: 600px) {
   .paymentForm {
     width: 90%;
