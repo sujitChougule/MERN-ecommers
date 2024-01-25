@@ -67,7 +67,7 @@ const Products = () => {
               <img
                 className="noFound"
                 src={NoDataImg}
-                alt="product not found image"
+                alt="product not found"
               />
             )}
           </div>
