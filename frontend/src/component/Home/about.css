@@ -1,0 +1,44 @@
+/* AboutUs.css */
+
+.about-us-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background: url("path-to-your-background-image.jpg") center/cover no-repeat; */
+}
+
+.about-us-content {
+  max-width: 800px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-us-content h1 {
+  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.about-us-content p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.2em;
+}
+
+/* Add more styles as needed */

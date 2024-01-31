@@ -8,6 +8,7 @@ import { BiCartAlt } from "react-icons/bi";
 import Search from "../../Product/Search.jsx";
 import { useSelector } from "react-redux";
 import UserOption from "./UserOption.jsx";
+import ThemeToggle from "../../other/ThemeToggle.js";
 const Header = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
 
@@ -43,29 +44,40 @@ const Header = () => {
         </div>
         {menuIsActive && <div className="overlay" onClick={closeMenu}></div>}
         <div className={`menu ${menuIsActive ? "is-active" : ""}`} id="menu">
-          <ul className="menu-inner">
-            <li className="menu-item">
-              <a className="menu-link" href="/" onClick={closeMenu}>
-                Home
-              </a>
-            </li>
-            <li className="menu-item">
-              <a className="menu-link" href="/products" onClick={closeMenu}>
-                Products
-              </a>
-            </li>
-            <li className="menu-item">
-              <a className="menu-link" href="/contact" onClick={closeMenu}>
-                Contact
-              </a>
-            </li>
-            <li className="menu-item">
-              <a className="menu-link" href="/about" onClick={closeMenu}>
-                About
-              </a>
-            </li>
-            <div className="topOpt">
-              {/* <li className="menu-item">
+          <div>
+            <ul className="menu-inner">
+              <li className="menu-item">
+                <a className="menu-link" href="/" onClick={closeMenu}>
+                  Home
+                </a>
+              </li>
+              <li className="menu-item">
+                <a className="menu-link" href="/products" onClick={closeMenu}>
+                  Products
+                </a>
+              </li>
+              <li className="menu-item">
+                <a className="menu-link" href="/contact" onClick={closeMenu}>
+                  Contact
+                </a>
+              </li>
+              <li className="menu-item">
+                <a className="menu-link" href="/about" onClick={closeMenu}>
+                  About
+                </a>
+              </li>
+              <li>
+                <a className="menu-link " href="/login" onClick={closeMenu}>
+                  <p>
+                    <RiAccountCircleFill className="icon" />
+                  </p>
+                </a>
+              </li>
+              {/* <li>
+              <ThemeToggle />
+            </li> */}
+              <div className="topOpt">
+                {/* <li className="menu-item">
                 {isAuthenticated ? (
                   <UserOption />
                 ) : (
@@ -76,28 +88,18 @@ const Header = () => {
                   </a>
                 )}
               </li> */}
-              <li className="menu-item">
-                <a className="menu-link" href="/cart" onClick={closeMenu}>
-                  <p>
-                    <BiCartAlt className="icon" />
-                  </p>
-                </a>
-              </li>
-            </div>
-          </ul>
+                <li className="menu-item">
+                  <a className="menu-link" href="/cart" onClick={closeMenu}>
+                    <p>
+                      <BiCartAlt className="icon" />
+                    </p>
+                  </a>
+                </li>
+              </div>
+            </ul>
+          </div>
         </div>
-        <li className="dynamicProfile">
-          {isAuthenticated ? (
-            <UserOption />
-          ) : (
-            <a className="elseProfile " href="/login" onClick={closeMenu}>
-              <RiAccountCircleFill
-                style={{ fontSize: "60px" }}
-                className="icon"
-              />
-            </a>
-          )}
-        </li>
+
         <span>
           <i className="bx bx-search search-toggle" onClick={toggleSearch}>
             <ImSearch />
@@ -114,6 +116,36 @@ const Header = () => {
             </span>
             <Search />
           </form>
+        </div>
+      </nav>
+      <nav>
+        <div>
+          {isAuthenticated ? (
+            <ul className="menu-inner">
+              <li className="menu-item">
+                <a className="menu-link" href="/" onClick={closeMenu}>
+                  Dashboard
+                </a>
+              </li>
+              <li className="menu-item">
+                <a className="menu-link" href="/products" onClick={closeMenu}>
+                  Orders
+                </a>
+              </li>
+              <li className="menu-item">
+                <a className="menu-link" href="/contact" onClick={closeMenu}>
+                  Profile
+                </a>
+              </li>
+              <li className="menu-item">
+                <a className="menu-link" href="/about" onClick={closeMenu}>
+                  Logout
+                </a>
+              </li>
+            </ul>
+          ) : (
+            ""
+          )}
         </div>
       </nav>
     </header>
