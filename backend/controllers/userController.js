@@ -242,6 +242,7 @@ exports.deleteUser = catchAsyncError(async (req, res, next) => {
   if (!user) {
     return next(new ErrorHandler("User does not exists", 404));
   }
+
   await user.deleteOne();
 
   res.status(200).json({

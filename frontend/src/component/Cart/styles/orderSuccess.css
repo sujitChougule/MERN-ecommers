@@ -11,7 +11,7 @@
 }
 .orderSuccess > svg {
   font-size: 7vmax;
-  color: #3498db;
+  color: green;
 }
 .orderSuccess > p {
   font-size: 2vmax;
