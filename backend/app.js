@@ -3,14 +3,14 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
-const dotenv = require("dotenv");
 const errorMiddleware = require("./middleware/error");
 const path = require("path");
 app.use(express.json());
 
 //config env
-dotenv.config({ path: "backend/config/config.env" });
-
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  require("dotenv").config({ path: "backend/config/config.env" });
+}
 //to use cookie use cookie Parser
 app.use(cookieParser());
 
