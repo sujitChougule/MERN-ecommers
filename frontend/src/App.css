@@ -18,3 +18,14 @@ input [type="number"] {
 .redColor {
   color: red;
 }
+
+/* 
+ */
+
+/* html {
+  cursor: url("./component/images/cursor.png"), auto;
+}
+
+html:hover {
+  cursor: url("./component/images/cursorN.png"), pointer;
+} */

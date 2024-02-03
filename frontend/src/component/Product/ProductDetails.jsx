@@ -149,7 +149,7 @@ const ProductDetails = () => {
               </div>
               <button onClick={submitReviewToggle} className="submitReview">
                 {" "}
-                Submit Review
+                Write a Review
               </button>
             </div>
           </div>
