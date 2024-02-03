@@ -4,7 +4,6 @@ $primary: #3498db;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   .banner {
     margin: 4rem 0;
   }
@@ -48,62 +47,9 @@ $primary: #3498db;
     border-bottom: 1px solid rgba(21, 21, 21, 0.5);
     width: 20vmax;
     padding: 1vmax;
-    margin: 3vmax auto;
-    position: relative;
+    margin: 5vmax auto;
   }
-  .topCar {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    margin-top: 3rem;
-    .gradient-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0),
-        rgb(255, 255, 255)
-      );
-    }
-  }
-  .subBanner {
-    position: relative;
-    top: -14rem;
-    > img {
-      margin-bottom: 3rem;
-    }
-  }
-  .catagory {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    justify-content: center;
-    top: -20rem;
-    > div {
-      margin-bottom: 1rem;
-      display: flex;
-      flex-direction: row;
 
-      justify-content: space-between;
-      align-items: center;
-      > div {
-        cursor: pointer;
-        transition: 0.4s;
-        &:hover {
-          scale: 1.1;
-        }
-        box-shadow: 7px 7px 14px rgba(0, 0, 0, 0.2);
-        > a > img {
-          border-radius: 12px;
-          height: 18vmax;
-        }
-      }
-    }
-  }
   @media only screen and (max-width: 48rem) {
     .banner {
       > h1 {
@@ -116,43 +62,23 @@ $primary: #3498db;
     .homeHeading {
       font-size: 2vmax;
     }
-    .catagory {
-      width: 100%;
-      white-space: nowrap; /* Prevents text from wrapping to the next line */
-      overflow-x: auto;
-      top: -4rem;
-      padding: 1rem;
-      > div {
-        width: 150%;
-        > div {
-          box-shadow: 7px 7px 14px rgba(0, 0, 0, 0);
-          width: 20rem;
-          > img {
-          }
-        }
-      }
-    }
-    .subBanner {
-      top: -4rem;
-      > img {
-        margin-bottom: 3rem;
-      }
-    }
   }
 
   ////feature products
   .containers {
     display: flex;
-    margin: 0;
-    width: 85vw;
+    margin: 2vmax auto;
+    width: 100vw;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 100%;
   }
   // product card
   @media only screen and (max-width: 48rem) {
-    .containers {
-      width: 100vw;
+    .home {
+      .containers {
+        padding: 0;
+      }
     }
   }
 }

@@ -5,6 +5,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./component/layouts/Header/Header";
 import Footer from "./component/layouts/Footer/Footer";
 import Home from "./component/Home/Home.jsx";
+import Contact from "./component/Home/Contact.jsx";
 import About from "./component/Home/About.jsx";
 
 import ProductDetails from "./component/Product/ProductDetails";
@@ -63,13 +64,13 @@ function App() {
     });
     store.dispatch(loadUser());
   }, []);
-
   return (
     // <ChakraProvider theme={theme}>
     <Router>
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About />} />
 
         <Route exact path="/product/:id" element={<ProductDetails />} />

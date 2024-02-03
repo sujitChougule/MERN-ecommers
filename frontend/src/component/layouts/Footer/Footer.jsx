@@ -25,10 +25,8 @@ const Footer = () => {
         <h4>Follow us</h4>
         <div>
           <a href="https://github.com/sujitChougule">GitHub</a>
-          <a href="https://www.linkedin.com/in/sujit-chougule-259932230/">
-            LinkedIn
-          </a>
-          <a href="https://www.instagram.com/sujit_chougule_7/">Instagram</a>
+          <a href="https://github.com/sujitChougule">LinkedIn</a>
+          <a href="https://github.com/sujitChougule">Instagram</a>
         </div>
       </div>
     </footer>
